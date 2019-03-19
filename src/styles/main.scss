@@ -1,0 +1,87 @@
+body,
+html {
+  height: 100%;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+/* structural elements 结构元素 */
+
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+/* list elements 列表元素 */
+
+pre,
+/* text formatting elements 文本格式元素 */
+
+fieldset,
+button,
+input,
+textarea,
+/* form elements 表单元素 */
+
+th,
+td {
+  /* table elements 表格元素 */
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none
+}
+
+img {
+  vertical-align: top;
+  border: none
+}
+
+.el-menu-item {
+  color: red;
+}
+
+.main-home {
+  .main-home-header {
+    .el-menu {
+      padding: 10px 25px;
+      background: rgba(0, 0, 0, .5) none repeat scroll !important;
+      height: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .el-menu-item {
+        height: 30px;
+        line-height: 30px;
+        border-bottom: none;
+        color: #FFF;
+        border-radius: 4px;
+        margin-right: 10px;
+        &:hover,
+        &:focus {
+          background-color: #e1e1e1;
+          color: #000; // background-color: transparent;
+        }
+      }
+      .el-menu-item.is-active {
+        background-color: #e1e1e1;
+        color: #000; // background-color: transparent;
+      }
+    }
+  }
+  .main-home-body {
+    // background: url('../assets/BlogBgc.jpg') no-repeat;
+    // background-size: cover;
+  }
+}
