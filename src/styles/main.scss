@@ -48,40 +48,354 @@ img {
   border: none
 }
 
-.el-menu-item {
-  color: red;
-}
-
 .main-home {
+  margin: 0 5%;
+  @media screen and (max-width: 1260px) {
+    .main-home-body-slot, .main-home-body-center-text, .main-home-body-bottom-text {
+      display: none;
+    }
+  }
   .main-home-header {
-    .el-menu {
-      padding: 10px 25px;
-      background: rgba(0, 0, 0, .5) none repeat scroll !important;
-      height: 90px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .el-menu-item {
-        height: 30px;
-        line-height: 30px;
-        border-bottom: none;
-        color: #FFF;
-        border-radius: 4px;
-        margin-right: 10px;
-        &:hover,
-        &:focus {
-          background-color: #e1e1e1;
-          color: #000; // background-color: transparent;
-        }
+    width: 100%;
+    height: 110px;
+    display: table;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #FFF;
+    box-shadow: 0 2px 8px #f0f1f2;
+    transition: background-color 0.3s ease-in-out;
+    .main-home-header-left {
+      width: 30%;
+      display: table-cell;
+      vertical-align: middle;
+      padding: 0 0 0 8%;
+      img {
+        display: block;
+        height: 65px;
+        width: 65px;
+        margin-left: 70px;
       }
-      .el-menu-item.is-active {
-        background-color: #e1e1e1;
-        color: #000; // background-color: transparent;
+    }
+    .main-home-header-right {
+      width: 70%;
+      display: table-cell;
+      vertical-align: middle;
+      ul {
+        li {
+          display: inline-block;
+          margin-right: 40px;
+          height: 33px;
+          line-height: 33px;
+          font-size: 14px;
+          color: #161b3d;
+          font-weight: 600;
+          &:hover {
+            cursor: pointer;
+            color: #dcb07d;
+          }
+        }
       }
     }
   }
   .main-home-body {
-    // background: url('../assets/BlogBgc.jpg') no-repeat;
-    // background-size: cover;
+    position: relative;
+    z-index: 1;
+    .main-home-body-top {
+      height: 570px;
+      margin-top: 120px;
+      margin-bottom: 320px;
+      padding-top: 60px;
+      background: linear-gradient(to right, #e98562, #febc73);
+      .main-home-body-top-content {
+        span {
+          display: inline-block;
+          line-height: 80px;
+        }
+        margin: 0 auto;
+        height: 80px;
+        width:80%;
+        line-height: 80px;
+        font-size: 40px;
+        font-family: Monospace;
+        font-weight: 600;
+        span:last-child {
+          font-size: 20px;
+          font-family: Serif;
+          font-weight: 400;
+          line-height: 40px;
+        }
+      }
+    }
+    .main-home-body-center {
+      height: 700px;
+      width: 80%;
+      padding: 0 50px;
+      background: linear-gradient(to bottom, #fefefe, #edeae7);
+      position: absolute;
+      top: 420px;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      z-index: 2;
+      animation: myfirst 1s;
+      @keyframes myfirst {
+        from {
+          top: 470px;
+        }
+        to {
+          top: 420px;
+        }
+      }
+      .main-home-body-slot {
+        height: 220px;
+        width: 2px;
+        background-color: red;
+        position: absolute;
+        background-image: linear-gradient(58deg, #e3745d 0%, #f4a16b 36%, #ffbf74 100%);
+        top: -80px;
+        left: 50%;
+      }
+      .main-home-body-center-text {
+        height: 40px;
+        line-height: 40px;
+        margin-left: 43%;
+        position: absolute;
+        top: 100px;
+        font-size: 24px;
+        transform: rotate(90deg);
+      }
+      .main-home-body-center-left {
+        height: 300px;
+        width: 420px;
+        overflow: hidden;
+        margin-top: -20px;
+        div:first-child {
+          height: 100%;
+          width: 100%;
+          transition: all 0.5s;
+          background: url('../assets/homebgc_1.jpg') no-repeat;
+          background-size: cover;
+          cursor: pointer;
+          &:hover {
+            transform: scale(1.10);
+          }
+        }
+      }
+    }
+    .main-home-body-bottom {
+      height: 100%;
+      box-sizing: border-box;
+      .main-home-body-bottom-top {
+        position: relative;
+        height: 400px;
+        background: linear-gradient(to right, #e98562, #febc73);
+        .main-home-body-slot {
+          height: 220px;
+          width: 2px;
+          background-color: red;
+          position: absolute;
+          background-image: linear-gradient(58deg, #e3745d 0%, #f4a16b 36%, #ffbf74 100%);
+          top: 280px;
+          left: 50%;
+        }
+        .main-home-body-bottom-text {
+          height: 40px;
+          line-height: 40px;
+          margin-left: 49%;
+          position: absolute;
+          top: 455px;
+          font-size: 24px;
+          transform: rotate(90deg);
+        }
+      }
+      .main-home-body-categories {
+        background-color: #FFF;
+        padding: 0 13%;
+        display: flex;
+        margin-top: -110px; // position: relative;
+        // z-index: 5;
+        .main-home-body-categories-left {
+          position: relative;
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+        .main-home-body-categories-right {
+          position: relative;
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          padding-top: 60px;
+        }
+        div {
+          width: 80%;
+          height: 700px;
+          margin-bottom: 40px;
+          img {
+            display: block;
+            width: 100%;
+            height: 300px;
+            transition: all 0.5s;
+            cursor: pointer;
+            &:hover {
+              transform: scale(0.95);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.main-home-footer {
+  width: 100%;
+  height: 200px;
+  margin: 100px 0;
+  position: relative;
+  background: linear-gradient(to right, #e98562, #febc73);
+  .main-home-footer-line {
+    position: absolute;
+    width: 50%;
+    height: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000;
+  }
+}
+
+.main-animation_1 {
+  animation: animation_1 1s;
+  @keyframes animation_1 {
+    from {
+      // top: 470px;
+      margin-bottom: 400px;
+    }
+    to {
+      margin-bottom: 320px;
+    }
+  }
+}
+
+.main-animation_2 {
+  animation: animation_2 1s;
+  @keyframes animation_2 {
+    from {
+      // top: 470px;
+      margin-top: 100px;
+    }
+    to {
+      margin-top: -110px;
+    }
+  }
+}
+
+/*宽高*/
+
+//ie 删除输入的叉号以及小眼睛
+input::-ms-clear {
+  display: none;
+}
+
+textarea {
+  overflow: auto;
+} //去除ie下textarea输入框默认显示右侧滚动条的问题
+/*上篇提到过，删除文本框中的叉号*/
+
+input::-ms-reveal {
+  display: none;
+}
+
+/*ie兼容placeholder*/
+
+:-ms-input-placeholder {
+  color: #c0c4cc;
+}
+
+/*删除密码框中的小眼睛*/
+
+//火狐浏览器中,去输入框有默认的红色边框
+input,
+textarea,
+select {
+  /* appearance: none; */
+  outline: none !important;
+  box-shadow: none;
+}
+
+.h {
+  height: 100%;
+}
+
+.h-0 {
+  height: 0;
+}
+
+.w {
+  width: 100%;
+}
+
+.main-icon {
+  //字体图标全局样式
+  // color:$color_blue;
+  font-size: 20px;
+}
+
+.el-dialog {
+  //弹框全局样式
+  width: 400px !important;
+  height: 420px;
+  .el-dialog__header {
+    height: 70px;
+    box-sizing: border-box;
+  }
+  .el-dialog__body {
+    padding: 0 40px;
+    .log-center {
+      //登录模块
+      .el-form-item {
+        .el-form-item__content {
+          .el-button {
+            width:100%;
+            background: linear-gradient(to right, #79BEFF, #448AFF);
+            color: #FFFFFF;
+            font-size: 14px;
+            border-radius: 2px;
+          }
+        }
+      }
+      .third-login {
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        padding: 0 40px;
+        .line{
+          height: 1px;
+          width:35px;
+          background-color:rgba(0, 0, 0, 0.25);
+          margin: 0 20px;
+        }
+      }
+      .third-login-methods {
+        height: 80px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        img {
+          height: 40px;
+          cursor: pointer;
+          width: 40px;
+          border-radius: 50%;
+          border: 1px solid rgba(0, 0, 0, 0.25);
+        }
+      }
+    }
   }
 }

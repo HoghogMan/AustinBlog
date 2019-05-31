@@ -22,25 +22,27 @@ const createLintingRule = () => ({
 })
 
 module.exports = {
-  context: path.resolve(__dirname, '../'),
+  context: path.resolve(__dirname, '../'), // Webpack在寻找相对路径文件的时候会以context为根目录
   entry: {
     app: './src/main.js'
   },
   output: {
-    path: config.build.assetsRoot,
+    path: config.build.assetsRoot, // 配置输出文件存放在本地的目录
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
+    publicPath: process.env.NODE_ENV === 'production' // 配置发布到线上的资源的url前缀
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: [
-      '.js', '.vue', '.json'
+      '.js', '.vue', '.json' // Webpack会自动带上后缀去尝试访问文件是否存在,优先顺序从前向后
     ],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
+      'vue$': 'vue/dist/vue.esm.js', // alias支持通过$符号来缩小范围到只命中以关键字结尾的导入语句
       '@': resolve('src')
-    }
+    },
+    modules: ['./src/components', 'node_modules'],
+    descriptionFiles: ['package.json']
   },
   module: {
     rules: [

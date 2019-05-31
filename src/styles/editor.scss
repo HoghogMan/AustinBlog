@@ -1,0 +1,163 @@
+.quill-editor{
+    .ql-toolbar{
+        text-align: left;
+        .ql-formats{
+            line-height: 24px;
+        }
+    }
+}
+.hljs {
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 1em;
+  font-family: 'Lucida Console', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  ol li span{
+        line-height: 28px;
+  }
+}
+/*默认编辑器输出样式*/
+.m-editor-default{
+  overflow: hidden;
+  overflow-x: auto;
+  p{
+    line-height: 32px;
+  }
+  h1,h2,h3,h4,h5,h6{
+    display: block;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    // color: $color_blue;
+  }
+  h1{
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+  }
+  h2{
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+  }
+  h3{
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+  }
+  h4{
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+  }
+  h5{
+    font-size: 0.83em;
+    margin-block-start: 1.67em;
+    margin-block-end: 1.67em;
+  }
+  h6{
+    font-size: 0.67em;
+    margin-block-start: 2.33em;
+    margin-block-end: 2.33em;
+  }
+  ul,ol{
+    padding-left: 25px;
+  }
+  blockquote{
+    padding: 10px 15px;
+    border-left: solid 10px #D6DBDF;
+    background: rgba(102,128,153,0.1);
+  }
+  table {
+      border-collapse: collapse;
+      display: table;
+      width: auto;
+      margin:0 auto 0px;
+      &[align="left"]{
+        float: none;
+        margin:0;
+      }
+      &[align="center"]{
+        margin:0 auto 0px;
+      }
+      &[align="right"]{
+        float: right;
+      }
+      .firstRow{
+        // background: $color_dialog_header;
+      }
+  }
+  td, th {
+    padding: 5px 10px;
+    border: 1px solid #979797;
+    word-break: normal !important;
+  }
+  img,video,audio,embed,canvas,svg{
+    max-width: 100%;
+  }
+  a{
+    // color: $color_hover;
+    text-decoration: underline;
+  }
+  embed{
+    display: inline-block;
+    // @include bgStatic('flash-player.gif');
+    background-color: #323433;
+    background-position: center center;
+  }
+  .editor-img{
+    margin-top: 10px;
+    // background: $color_lightblue;
+    padding: 10px 10px 20px 20px;
+    overflow: hidden;
+    .ed-img-item{
+      float: left;
+      position: relative;
+      max-width: 100%;
+      margin-right: 10px;
+      margin-top: 10px;
+      .ed-img-wrap{
+        display: block;
+        max-width: 100%;
+        width: auto !important;
+        min-width: 50px;
+        height: 198px;
+        padding: 4px;
+        border:1px solid #cce3fe;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .ed-img-text{
+        position: absolute;
+        left:0;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        line-height: 2;
+        text-align: center;
+        z-index: -1;
+      }
+      img{
+        display: block;
+        margin: 0 auto;
+        cursor: pointer;
+        max-width: 100%;
+        width: auto;
+        height: 100%;
+      }
+    }
+  }
+  .editor-attachment-item{
+    font-size: inherit;
+    text-decoration: none;
+    margin: 0 4px;
+    // &:before{ position: relative; top: 2px; font-size: 17px; color: $color; margin-right: 2px;}
+    &:hover{
+    //   color: $color;
+      &:before{
+        // color: $color;
+      }
+    }
+  }
+  .iconfont:before{
+    font-family: "iconfont" !important;
+  }
+}

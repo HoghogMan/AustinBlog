@@ -10,19 +10,19 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/api/v1': {
-        target: 'http://101.68.92.242:3000',
+    proxyTable: { // 这段代码的效果就是将本地8080端口的一个请求代理到了http://localhost:3000这一域名下：
+      '/api/v1': { // 本地请求localhost:8080/api/v1 相当于请求 http://localhost:3000/
+        target: 'http://localhost:3000',
         changeOrigin: true,
         pathRewrite: {
-          '^/api/v1': ''
+          '^/api/v1': '/api'
         }
       }
     },
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
+    autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
@@ -57,7 +57,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/AustinBlog/dist',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

@@ -1,0 +1,26 @@
+//element UI组件样式修改
+.el-form {
+  .el-form-item {
+    .el-form-item__label {
+      width: 160px;
+      text-align: right;
+      line-height: 40px;
+      padding-right: 8px;
+      font-size: 14px;
+      box-sizing: border-box;
+      color: #5c6d8c;
+    }
+  }
+  .el-select{
+      width:100%;
+  }
+}
+
+.el-button--primary{
+    background-color: #febc73;
+    border-color: #febc73;
+  &:hover{
+    background-color: #e98562;
+    border-color: #e98562;
+  }
+}
