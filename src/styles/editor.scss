@@ -92,6 +92,8 @@
   }
   img,video,audio,embed,canvas,svg{
     max-width: 100%;
+    display: block;
+    margin: 0 auto;
   }
   a{
     // color: $color_hover;

@@ -6,7 +6,7 @@ let articlesSchema = new Schema({ // 设置用户信息表结构
   title: String,
   date: {
     type: String,
-    default: new Date().getTime()
+    default: new Date().toLocaleString()
   },
   content: String
 })

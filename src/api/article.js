@@ -69,3 +69,12 @@ export function getArticleById ({ data = {}, params = {}, custom = {} }) { // �
     params
   })
 }
+
+export function getArticleTimeline ({ data = {}, params = {}, custom = {} }) { // 获取时间线
+  return request({
+    url: `/article/timeline`,
+    method: 'get',
+    custom,
+    params
+  })
+}

@@ -76,7 +76,7 @@ export default {
 
 <style scoped lang="scss">
 .page-up {
-    background-color: #febc73;
+    background-color: $color_btn;
     position: fixed;
     right: 15px;
     bottom: 30px;
@@ -98,9 +98,6 @@ export default {
         display: none;
         text-align: center;
         color: #fff;
-    }
-    &:hover {
-        background-color: #e98562;        
     }
 }
 </style>

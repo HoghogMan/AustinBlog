@@ -5,6 +5,50 @@ const router = express.Router()
 let Catelog = require('../model/catelog.js')
 let VisitorIp = require('../model/visitorIp.js')
 
+router.get('/timeline', function (req, res) { // 返回所有文章的创建时间
+  let pageOptions = {
+    limit: req.query.pageSize ? Number(req.query.pageSize) : 5, // pageSize
+    skip: (req.query.pageSize && req.query.pageNum) ? (req.query.pageSize * (req.query.pageNum - 1)) : 0 // 要跳过的页码数
+  }
+  let totalLength, catelogList // 定义所有文章的数量  以及目录的列表
+  return new Promise((resolve, reject) => {
+    Catelog.find({}, function (err, res) {
+      if (err) {
+        reject(err)
+      } else {
+        totalLength = res.filter(item => item.isCatelog === 0).length
+        catelogList = res.filter(item => item.isCatelog === 1)
+        resolve(catelogList)
+      }
+    })
+  }).then((catelogList) => {
+    Catelog.find({isCatelog: 0}).sort({'date': -1}) // 按照时间倒序
+      .skip(pageOptions.skip || 0)// 跳过的条数
+      .limit(pageOptions.limit || 5)// 查询几条
+      .exec(function (err, res1) {
+        if (err) {
+          console.log(err)
+        } else {
+          let articles = JSON.parse(JSON.stringify(res1))
+          for (let i = 0, arrLen1 = articles.length; i < arrLen1; i++) {
+            for (let j = 0, arrLen2 = catelogList.length; j < arrLen2; j++) {
+              if (articles[i].parentId === catelogList[j]._id.toString()) {
+                articles[i].parentCatelog = catelogList[j].name
+              }
+            }
+          }
+          let timelineDate = {
+            pageSize: Number(req.query.pageSize),
+            pageNum: Number(req.query.pageNum),
+            data: articles,
+            total: totalLength
+          }
+          res.send(timelineDate)
+        }
+      })
+  })
+})
+
 router.get('/:id', function (req, res) { // 根据文章id查询文章
   let realIp = req.get('X-Real-IP') || req.get('X-Forwarded-For') || req.ip
   return new Promise((resolve, reject) => {

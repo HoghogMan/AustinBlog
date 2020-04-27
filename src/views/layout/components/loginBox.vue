@@ -20,16 +20,6 @@
                     <el-form-item>
           </el-form-item>
                 </el-form>
-                <div class="third-login">
-                    <div class="line"></div>    
-                    <div>其他登录方式</div>    
-                    <div class="line"></div>                        
-                </div> 
-                <div class="third-login-methods">
-                    <div><img src="../../../assets/weixin.png"></img></div>
-                    <div><img src="../../../assets/qq.png"></img></div>                    
-                    <div><img src="../../../assets/weibo.png"></img></div>                      
-                </div>                 
             </section>
 </template>
 

@@ -1,8 +1,8 @@
 <template>
-  <section>
+  <section v-if="showMainHeader">
     <section class="main-home-header">
       <section class="main-home-header-left">
-        <img src="../../../assets/avatar.png" alt="">
+        <!-- <img src="../../../assets/avatar.png" alt=""> -->
       </section>
       <section class="main-home-header-right">
         <section class="drop-dowm">
@@ -22,8 +22,8 @@
           </el-dropdown>
         </section>
         <ul>
-          <li v-for="(item,index) in navData.filter(item => item.isNormal == true)" :key="index" :class="{'active' : item.name == activeName}" @click="handleClick(item,index)">
-            {{item.name}}
+          <li v-for="(item,index) in navData" :key="index" :class="{'active' : activeName.indexOf(item.name) !== -1 }" @click="handleClick(item,index)">
+            {{item.label}}
           </li>
         </ul>
       </section>
@@ -42,43 +42,31 @@ export default {
   props: {},
   data() {
     return {
-      activeName: '首页',//默认高亮Home
+      activeName:this.$route.path,//默认高亮Home
       dialogLoginVisible: false,//是否显示登录弹框,默认不显示
       navData: [
-        {
-          name: '首页',
-          isNormal: true,
-        }, {
-          name: '文章',
-          isNormal: true,
+        { 
+          label: '首页',
+          name: 'home',
         },
-        // {
-        //   name: 'Share',
-        // },
-        // {
-        //   name: 'Contact',
-        //   isNormal: true,          
-        // }
+        {
+          label: '创作轴',
+          name: 'createLine',
+        }, {
+          label: '文章',
+          name: 'itemPark',
+        },
+        {
+          label: '关于我',
+          name: 'aboutMe',
+        },
       ]
     }
   },
-  created() {
-    console.log(this.$route.name);
-    if (this.$route.name == 'itemDetail' || this.$route.name == 'itemPark') {
-      this.activeName = '文章'
-    } else {
-      this.activeName = '首页'
-    }
-  },
-  mounted() { },
   methods: {
     handleClick(item) {
       this.activeName = item.name;
-      if (item.name == '文章') {
-        this.$router.push('/itemPark');
-      } else {
-        this.$router.push('/');
-      }
+      this.$router.push({name: item.name});
     },
     loginSuccess() { //登录成功
       this.$set(this.navData, 1, {
@@ -115,9 +103,9 @@ export default {
     }
   },
   watch: {
-    $route(to, from) {
-      if (to.path == '/') {
-        this.activeName = '首页'
+    $route(val){
+      if(val){
+        this.activeName = val.path;
       }
     }
   },
@@ -127,6 +115,9 @@ export default {
     },
     userName() {
       return this.$store.getters.getUser.username ? this.$store.getters.getUser.username : '';
+    },
+    showMainHeader() {  // 是否显示头部banner  非首页显示
+      return this.$route.path !== '/';
     }
   },
   components: {
@@ -136,13 +127,14 @@ export default {
 </script>
 <style lang="scss" scoped>
 .active {
-  color: #dcb07d !important;
+  background-color: #FFF;
+  color: #000 !important;
 }
 
 .welcome-text {
   text-align: right;
   font-size: 14px;
-  color: #161b3d;
+  color: #FFF;
   font-weight: 600;
 }
 
@@ -153,10 +145,11 @@ export default {
   cursor: pointer;
   /deep/.el-dropdown-link {
     cursor: pointer;
-    color: #409EFF;
+    color: #FFF;
   }
   .el-icon-arrow-down {
     font-size: 12px;
+    color: #FFF;
   }
 }
 </style>

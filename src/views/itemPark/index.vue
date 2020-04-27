@@ -4,7 +4,6 @@
       <div class="item-left-inner">
         <section class="item-title">
           <div>
-            <span class="item-title-img"></span>
             <span>目录</span>
           </div>
           <el-tooltip class="item" effect="dark" content="添加目录或文章" placement="top">
@@ -18,9 +17,11 @@
                 <span>{{ item.name }}</span>
               </div>
             </template>
-            <div v-for="child in item.subArticles" :key="child._id" v-if="item.subArticles.length > 0" class="item" :class="{current: child._id == currentId, 'waves-effect': child._id == currentId}" @click="clickDetail(child)">
+            <template v-if="item.subArticles.length > 0">  
+            <div v-for="child in item.subArticles" :key="child._id" class="item" :class="{current: child._id == currentId, 'waves-effect': child._id == currentId}" @click="clickDetail(child)">
               <span>{{ child.name }}</span>
             </div>
+            </template>
           </el-collapse-item>
         </el-collapse>
         <!--<section class="nodata" v-show="!navData">
@@ -34,7 +35,6 @@
     <!--<keep-alive>-->
     <router-view v-if="reInitData" @reget-catelog = "getCatelog" @active-name="getActiveName"></router-view>
     <!--</keep-alive>-->
-
     <dialog-add-guide :dialogShow="dialogShow" @init-data="getCatelog" @dialog-close="dialogShow = false;"></dialog-add-guide>
   </section>
 </template>
@@ -154,29 +154,34 @@ export default {
 <style scoped lang="scss">
 .item-wrap {
   width: 100%;
-  margin: 110px 0 60px;
   overflow-y: auto;
   overflow-x: hidden;
+  background: url("../../assets/bg-juren-02.jpg") no-repeat center center;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 /deep/ .item-left {
   flex: none;
   width: 288px;
-  border-right: 1px solid #e6eaed;
+  opacity: 0.9;
   padding-bottom: 50px;
   position: fixed;
   overflow-y: hidden;
   overflow-x: hidden;
-  top: 110px;
+  top: 80px;
   left: 0;
   bottom: 0;
-  &:hover {
-    width: 288px;
-    transition: width 1s;
-    overflow-y: auto;
-  }
+  overflow-y: auto;
   .item-left-inner {
-    height: 2000px;
+    height: 800px;
+    /deep/ .el-loading-spinner{
+      margin-top: 30px;
+    }
   }
   .has-no-children {
     .el-collapse-item__wrap,
@@ -187,9 +192,11 @@ export default {
   .el-collapse-item__content {
     padding: 0;
     font-size: 14px;
+    color: #FFF;
   }
   .el-collapse-item__wrap {
     border-color: transparent;
+    background-color: transparent !important;
   }
   .el-collapse-item__header {
     position: relative;
@@ -197,6 +204,7 @@ export default {
     border-color: transparent;
     font-size: 14px;
     background: none;
+    color:#FFF;
     .el-collapse-item__arrow {
       position: absolute;
       z-index: 2;
@@ -222,22 +230,22 @@ export default {
       align-items: center;
       cursor: pointer;
       &:hover {
-        color: #1890ff;
+        background-color: rgba(0,0,0,.6);
       }
       &.current {
-        background-color: #e6f7ff;
-        color: #1890ff;
+        background-color: rgba(0,0,0,.6);
+        color: #FFF;
         position: relative;
         &:after {
           content: '';
           position: absolute;
           display: block;
           height: 40px;
-          width: 3px;
+          width: 4px;
           right: 0;
           top: 0;
           bottom: 0;
-          background-color: #1890ff;
+          background-color: #4f4949;
         }
       }
       span {
@@ -254,8 +262,12 @@ export default {
       padding-left: 40px;
     }
   }
+  
 }
-
+// .item-left::-webkit-scrollbar{
+//   width: 20px;
+//   height: 100%;
+// }
 
 .item-title {
   display: flex;
@@ -265,7 +277,8 @@ export default {
   padding: 0 20px;
   font-weight: normal;
   font-size: 20px;
-  border-bottom: 1px solid #e6eaed;
+  color:#FFF;
+  border-bottom: 2px solid #e6eaed;
   div {
     width: 180px;
     height: 30px;
@@ -277,10 +290,6 @@ export default {
       height: 30px;
       margin-right: 10px;
     }
-  }
-  .item-title-img {
-    width: 30px; //   @include bg('document.png');
-    background: url("../../assets/document.png") no-repeat;
   }
   .el-icon-plus {
     color: orange;
@@ -296,6 +305,6 @@ export default {
   top: 100px;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  color: #6f7180
+  color: #FFF
 }
 </style>

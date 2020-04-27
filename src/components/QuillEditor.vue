@@ -13,14 +13,14 @@ export default {
     name: 'App',
     data() {
         const toolbarOptions = [
-            // ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-            // [{ 'color': [] }, { 'background': [] }],             
-            // ['blockquote', 'code-block'],
-            // [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-            // [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
-            // [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
-            // [{ 'direction': 'rtl' }],                         // text direction          // dropdown with defaults from theme
-            // ['image'],                       
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            [{ 'color': [] }, { 'background': [] }],             
+            ['blockquote', 'code-block'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+            [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+            [{ 'direction': 'rtl' }],                         // text direction          // dropdown with defaults from theme
+            ['image'],                       
         ]
         return {
             content: `<p>hello world</p>`,

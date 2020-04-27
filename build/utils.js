@@ -41,7 +41,7 @@ exports.cssLoaders = function (options) {
         })
       })
     }
-  // Extract CSS when that option is specified
+    // Extract CSS when that option is specified
     // (which is the case during production build)
     if (options.extract) {
       return ExtractTextPlugin.extract({
@@ -53,35 +53,34 @@ exports.cssLoaders = function (options) {
     }
   }
 
-
-   //生成SASS资源加载器
-  function generateSassResourceLoader() {
-        var loaders = [
-            cssLoader,
-            postcssLoader, 
-            //px2remLoader, // 如果需要引用lib-flexible，则需要在loader里添加px2remLoader，否则px不会自动转rem
-            'sass-loader',
-            {
-                loader: 'sass-resources-loader',
-                options: {
-                    resources: [//需要全局配置的scss
-                        path.resolve(__dirname, '../src/styles/variaty.scss'),
-                        path.resolve(__dirname, '../src/styles/mixin.scss'),
-                    ]
-                }
-            }
-        ]
-        if (options.extract) {
-            return ExtractTextPlugin.extract({
-                use: loaders,
-                fallback: 'vue-style-loader'
-            })
-        } else {
-            return ['vue-style-loader'].concat(loaders)
+  // 生成SASS资源加载器
+  function generateSassResourceLoader () {
+    var loaders = [
+      cssLoader,
+      postcssLoader,
+      // px2remLoader, // 如果需要引用lib-flexible，则需要在loader里添加px2remLoader，否则px不会自动转rem
+      'sass-loader',
+      {
+        loader: 'sass-resources-loader',
+        options: {
+          resources: [// 需要全局配置的scss
+            path.resolve(__dirname, '../src/styles/variaty.scss'),
+            path.resolve(__dirname, '../src/styles/mixin.scss')
+          ]
         }
+      }
+    ]
+    if (options.extract) {
+      return ExtractTextPlugin.extract({
+        use: loaders,
+        fallback: 'vue-style-loader'
+      })
+    } else {
+      return ['vue-style-loader'].concat(loaders)
     }
-    // Extract CSS when that option is specified
-    // (which is the case during production build)
+  }
+  // Extract CSS when that option is specified
+  // (which is the case during production build)
 
   // https://vue-loader.vuejs.org/en/configurations/extract-css.html
   return {

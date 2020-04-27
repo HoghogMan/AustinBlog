@@ -2,30 +2,29 @@ const mongoose = require('mongoose') // 引包
 const fs = require('fs')
 const express = require('express')
 const bodyParser = require('body-parser')
+const createError = require('http-errors') // http-errors包能根据传入的http状态码，生成对应的HTTP error。
 
 const indexRouter = require('./routes/index')
 const userRouter = require('./routes/user')
 const articleRouter = require('./routes/articles')
+const uploadRouter = require('./routes/upload')
 
 const session = require('express-session')
-// const MongoStore = require('connect-mongo')(session)
 
 let app = express()
-
-// 权限控制
-// const Acl = require('acl')
-// const aclConfig = require('./utils/acl_conf')
-// const acl = new Acl(new Acl.memoryBackend()); // eslint-disable-line
-// acl.allow(aclConfig)
 
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 // parse application/json
 app.use(bodyParser.json({limit: '50mb'})) // 使用bodyparder中间件
 
-// 1. 连接MongoDB数据库 连接articles数据库,这个数据库不一定存在
+// 将静态文件目录设置为：项目根目录+/public
+app.use('/public', express.static('public'))
 
-let dbUrl = 'mongodb://Austin:wenzg3213@39.108.55.93:27017/articles?authSource=admin'
-mongoose.connect(dbUrl, {useNewUrlParser: true})
+// 1. 连接MongoDB数据库 连接articles数据库,这个数据库不一定存在
+let dbUrl = 'mongodb://admin:123456@localhost:27017/articles?authSource=admin'
+mongoose.connect(dbUrl, {useNewUrlParser: true,useUnifiedTopology: true}).catch(error => {
+  // Handle connection error
+});
 mongoose.Promise = global.Promise // 创建一个模型 就是设计数据库
 
 app.use(session({
@@ -55,6 +54,12 @@ app.use(function (req, res, next) {
 app.use('/api/', indexRouter)
 app.use('/api/user', userRouter)
 app.use('/api/article', articleRouter)
+app.use('/api/upload', uploadRouter)
+
+app.use(function (err, req, res, next) { // 错误处理中间件
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 
 app.listen(3000, '0.0.0.0', () => {
   console.log('app is running at port 3000.')

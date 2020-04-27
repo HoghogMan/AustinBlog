@@ -17,10 +17,10 @@
 }
 
 .el-button--primary{
-    background-color: #febc73;
-    border-color: #febc73;
+    background-color: $color_btn;
+    border-color: $color_btn;
   &:hover{
-    background-color: #e98562;
-    border-color: #e98562;
+    background-color: $color_btn;
+    border-color: $color_btn;
   }
 }

@@ -39,12 +39,12 @@ export default {
   other_error: 'The network is slow. Please try again later'
 }
 
-//自定义的提示
+// 自定义的提示
 export let messageCustom = {
   login_error: 'Your account or password is not correct, please input again!',
   login_auth: 'You have to log in to see!',
   protocol: 'Please read the protocol first and agree to the protocol!',
-  password_temporary: 'A temporary password has sent to your email,please use it to reset your password.',
+  password_temporary: 'A temporary password has been sent to your email,please use it to reset your password.',
   password_invalid: 'Your password is invalid , please reset it.',
   password_reset: 'Please reset your password.',
   password_modified_success: 'The password has been modified successfully.',
@@ -63,7 +63,7 @@ export let messageCustom = {
   follow_success: 'Thanks for following this item, you will be notified of any updates of this item hereafter.'
 }
 
-//规则表单提示
+// 规则表单提示
 export let messageRule = {
   Inputbox: 'Support English, Chinese, numerals, minus signs, underscores, Spaces, single quotes',
   charrule: 'Please enter the specified character',
@@ -152,7 +152,6 @@ export let messageRule = {
   issue_add_typeId: 'Please select issue type',
   issue_add_description: 'Please enter description',
 
-
   // resourse
   // add item添加文章
   resourse_add_targetuser: 'Please select target user',
@@ -188,7 +187,6 @@ export let messageRule = {
   product_pnList_exist: 'PN has already existed',
   product_add_branchName: 'Please enter branch name',
 
-
   // 长度
   max20: 'cannot be longer than 20 character',
   max30: 'cannot be longer than 30 character',
@@ -201,7 +199,7 @@ export let messageRule = {
   max10000: 'cannot be longer than 10000 character'
 }
 
-//弹框提示
+// 弹框提示
 export let messageDialog = {
   ok: 'OK',
   cancel: 'Cancel',

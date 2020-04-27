@@ -8,7 +8,7 @@ import router from './router'
 // 'ant-design-vue'
 
 import ElementUI from 'element-ui'
-import locale from 'element-ui/lib/locale/lang/en'
+import locale from 'element-ui/lib/locale/lang/zh-CN'
 import 'element-ui/lib/theme-chalk/index.css'
 import './styles/index.scss'
 // import Button from 'ant-design-vue/lib/button'
